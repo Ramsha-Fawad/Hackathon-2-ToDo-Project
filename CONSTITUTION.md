@@ -1,19 +1,4 @@
-<!-- Sync Impact Report:
-Version change: N/A -> 1.0.0
-Modified principles: None (new constitution)
-Added sections: All sections (new constitution)
-Removed sections: None
-Templates requiring updates:
-- ✅ .specify/templates/plan-template.md - updated Constitution Check section to reflect new principles
-- ✅ .specify/templates/spec-template.md - updated requirements alignment
-- ✅ .specify/templates/tasks-template.md - updated task categorization reflecting new principles
-Templates not requiring updates:
-- ⚠ N/A - no other templates affected
-Follow-up TODOs:
-- TODO(RATIFICATION_DATE): Original adoption date unknown - needs to be set when constitution is ratified
--->
-
-# Evolution of Todo – AI-Spec Driven Full-Stack Todo App with Agentic Intelligence Constitution
+# Evolution of Todo Project Constitution
 
 ## Core Principles
 
