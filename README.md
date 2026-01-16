@@ -1,18 +1,65 @@
-# Evolution of Todo - Mono Repo
+# Spec-Driven Todo Application
 
-## Project Structure
+This repository contains a **multi-phase, spec-driven Todo application** built using an **Agentic Development Stack**. The project is designed for a hackathon evaluation that emphasizes **process discipline, reusable intelligence, and secure full-stack architecture**.
 
-This mono repo contains 5 distinct phases of the Evolution of Todo project, representing the progression from simple console app to complex cloud deployment:
+---
 
-### Phases
+## Project Overview
 
-- **Phase I**: In-Memory Python CLI
-- **Phase II**: Full-Stack Web App
-- **Phase III**: AI-Powered Chatbot
-- **Phase IV**: Local Kubernetes Deployment
-- **Phase V**: Advanced Cloud Deployment
+The Todo application evolves incrementally across five phases, starting from a simple in-memory console app and culminating in a cloud-native, AI-powered system.
 
-### Directory Structure
+Each phase is implemented using **Claude Code + Spec-Kit Plus**, with strict adherence to specification immutability and agent-based execution.
+
+---
+
+## Hackathon Phases
+
+### Phase I — Console Application
+- Python-based in-memory Todo app
+- Spec-driven development
+- Core task management features
+
+### Phase II — Full-Stack Web Application
+- Next.js frontend (App Router)
+- FastAPI backend
+- SQLModel + Neon Serverless PostgreSQL
+- JWT-based authentication using Better Auth
+- Secure, multi-user task isolation
+
+### Phase III — AI-Powered Todo Chatbot
+- OpenAI ChatKit
+- Agents SDK
+- Official MCP SDK
+- Natural language task management
+
+### Phase IV — Local Kubernetes Deployment
+- Dockerized services
+- Minikube
+- Helm charts
+- kubectl-ai and kagent
+
+### Phase V — Advanced Cloud Deployment
+- DigitalOcean DOKS
+- Kafka for event streaming
+- Dapr for service orchestration
+
+---
+
+## Development Methodology
+
+This project strictly follows an **Agentic, Spec-Driven workflow**:
+
+1. Write immutable specifications
+2. Generate implementation plans
+3. Break plans into executable tasks
+4. Execute tasks via specialized agents
+5. Reuse intelligence through agent skills
+
+Manual coding outside this workflow is not permitted.
+
+---
+
+## Repository Structure (High-Level)
 
 ```
 /
@@ -49,6 +96,40 @@ This mono repo contains 5 distinct phases of the Evolution of Todo project, repr
         └── README.md
 ```
 
-## Usage
 
-This structure is designed to support spec-driven development workflow where each phase builds upon the previous one. The standardized subdirectories (specs, src, tests) in each phase enable consistent development practices across all phases of the project.
+---
+
+## Agentic Development Stack
+
+- **Agents**: Specialized execution units (frontend, backend, auth, DB, UI/UX)
+- **Skills**: Reusable intelligence units (auth, validation, persistence, API contracts)
+- **Specs**: Single source of truth for behavior and architecture
+
+This structure enables consistency, reuse, and evaluable development practices.
+
+---
+
+## Security Model
+
+- JWT-based stateless authentication
+- Strict user isolation on all API operations
+- Shared secret between frontend and backend
+- Backend as the source of truth for authorization
+
+---
+
+## Evaluation Focus
+
+This project is evaluated on:
+- Spec immutability compliance
+- Correct agent usage
+- Skill reuse
+- Security and correctness
+- Phase-by-phase architectural evolution
+
+---
+
+## License & Usage
+
+This repository is intended for **educational and hackathon evaluation purposes**.  
+All design decisions prioritize clarity, security, and process rigor over shortcuts.
