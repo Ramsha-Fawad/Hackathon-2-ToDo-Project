@@ -43,11 +43,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const sessionData = await authClient.getSession();
 
-      if (sessionData?.session) {
+      if (sessionData && typeof sessionData === 'object' && 'session' in sessionData && sessionData.session) {
+        const sessionObj = sessionData as any;
         setUser({
-          id: sessionData.session.user.id,
-          email: sessionData.session.user.email,
-          name: sessionData.session.user.name || sessionData.session.user.email?.split('@')[0],
+          id: sessionObj.session.user.id,
+          email: sessionObj.session.user.email,
+          name: sessionObj.session.user.name || sessionObj.session.user.email?.split('@')[0],
         });
       } else {
         setUser(null);
@@ -67,15 +68,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         password,
       });
 
-      if (result?.session) {
+      if (result && typeof result === 'object' && 'session' in result && result.session) {
+        const resultObj = result as any;
         setUser({
-          id: result.session.userId,
-          email: result.session.user.email,
-          name: result.session.user.name || result.session.user.email?.split('@')[0],
+          id: resultObj.session.userId,
+          email: resultObj.session.user.email,
+          name: resultObj.session.user.name || resultObj.session.user.email?.split('@')[0],
         });
         return { success: true };
       } else {
-        return { success: false, error: result?.error?.message || 'Sign in failed' };
+        const resultObj = result as any;
+        return { success: false, error: result && typeof result === 'object' && 'error' in result && resultObj.error?.message ? resultObj.error.message : 'Sign in failed' };
       }
     } catch (error) {
       console.error('Sign in error:', error);
@@ -88,17 +91,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const result = await authClient.signUp.email({
         email,
         password,
+        name: email.split('@')[0], // Extract name from email
       });
 
-      if (result?.session) {
+      if (result && typeof result === 'object' && 'session' in result && result.session) {
+        const resultObj = result as any;
         setUser({
-          id: result.session.userId,
-          email: result.session.user.email,
-          name: result.session.user.name || result.session.user.email?.split('@')[0],
+          id: resultObj.session.userId,
+          email: resultObj.session.user.email,
+          name: resultObj.session.user.name || resultObj.session.user.email?.split('@')[0],
         });
         return { success: true };
       } else {
-        return { success: false, error: result?.error?.message || 'Sign up failed' };
+        const resultObj = result as any;
+        return { success: false, error: result && typeof result === 'object' && 'error' in result && resultObj.error?.message ? resultObj.error.message : 'Sign up failed' };
       }
     } catch (error) {
       console.error('Sign up error:', error);
