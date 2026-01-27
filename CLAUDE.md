@@ -49,3 +49,10 @@ When working inside a subdirectory:
 3. Resolve conflicts by favoring stricter rules
 
 This project is evaluated on **discipline, correctness, and reuse of intelligence**.
+
+## Active Technologies
+- Python 3.13+ + FastAPI, SQLModel, PyJWT, python-multipart, uvicorn (001-fastapi-backend)
+- Neon Serverless PostgreSQL via SQLModel ORM (001-fastapi-backend)
+
+## Recent Changes
+- 001-fastapi-backend: Added Python 3.13+ + FastAPI, SQLModel, PyJWT, python-multipart, uvicorn

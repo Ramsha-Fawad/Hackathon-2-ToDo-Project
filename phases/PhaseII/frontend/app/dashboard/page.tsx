@@ -1,15 +1,15 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../../../context/AuthContext';
-import { todoService, Todo, CreateTodoInput, UpdateTodoInput } from '../../../services/todo-service';
-import TodoForm from '../../../components/todos/TodoForm';
-import TodoItem from '../../../components/todos/TodoItem';
-import LogoutButton from '../../../components/auth/LogoutButton';
+import { useAuth } from '../../context/AuthContext';
+import { todoService, Todo, CreateTodoInput, UpdateTodoInput } from '../../services/todo-service';
+import TodoForm from '../../components/todos/TodoForm';
+import TodoItem from '../../components/todos/TodoItem';
+import LogoutButton from '../../components/auth/LogoutButton';
 import Link from 'next/link';
-import EmptyState from '../../../components/todos/EmptyState';
-import LoadingSpinner from '../../../components/ui/LoadingSpinner';
-import DarkModeToggle from '../../../components/ui/DarkModeToggle';
+import EmptyState from '../../components/todos/EmptyState';
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
+import DarkModeToggle from '../../components/ui/DarkModeToggle';
 
 const DashboardPage = () => {
   const { user, isLoading: authLoading } = useAuth();
@@ -76,11 +76,11 @@ const DashboardPage = () => {
   };
 
   // Implement todo creation functionality with API call
-  const handleCreateTodo = async (todoData: CreateTodoInput) => {
+  const handleCreateTodo = async (todoData: CreateTodoInput | UpdateTodoInput) => {
     try {
       setIsCreating(true);
       setError(null); // Clear previous errors
-      const newTodo = await todoService.create(todoData);
+      const newTodo = await todoService.create(todoData as CreateTodoInput);
       setTodos(prev => [newTodo, ...prev]);
     } catch (err) {
       console.error('Error creating todo:', err);
@@ -338,7 +338,12 @@ const DashboardPage = () => {
               action={
                 filter === 'all' && (
                   <button
-                    onClick={() => document.querySelector('input[type="text"]')?.focus()}
+                    onClick={() => {
+                    const element = document.querySelector('input[type="text"]');
+                    if (element instanceof HTMLElement) {
+                      element.focus();
+                    }
+                  }}
                     className="mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 min-h-[44px] min-w-[44px]"
                   >
                     Add Todo
