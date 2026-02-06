@@ -1,5 +1,5 @@
 from sqlmodel import create_engine
-from config.settings import settings
+from ..config.settings import settings
 
 # Create the database engine with connection pooling
 engine = create_engine(

@@ -3,6 +3,26 @@ from datetime import datetime
 from typing import Optional
 
 
+class User(SQLModel, table=True):
+    """
+    User model representing a registered user in the database.
+
+    Fields:
+    - id: Primary key, unique user identifier
+    - email: User's email address (unique)
+    - username: User's display name
+    - hashed_password: Hashed password for authentication
+    - created_at: Timestamp when the user was created
+    - updated_at: Timestamp when the user was last modified
+    """
+    id: str = Field(primary_key=True)
+    email: str = Field(unique=True, index=True)
+    username: str = Field(max_length=50)
+    hashed_password: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+    updated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
 class TaskBase(SQLModel):
     """
     Base class containing common fields for Task model.

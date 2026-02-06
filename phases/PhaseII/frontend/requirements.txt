@@ -1,0 +1,20 @@
+# Frontend Dependencies
+
+This document lists the key dependencies used in the frontend application.
+
+## Core Dependencies
+
+- next: Latest version for App Router functionality
+- react: React 18+ for component architecture
+- react-dom: React DOM bindings
+- typescript: Type safety
+- better-auth: Authentication solution
+- tailwindcss: Styling framework
+
+## Dev Dependencies
+
+- @types/react: TypeScript types for React
+- @types/node: TypeScript types for Node.js
+- @types/react-dom: TypeScript types for React DOM
+- eslint: Code linting
+- prettier: Code formatting

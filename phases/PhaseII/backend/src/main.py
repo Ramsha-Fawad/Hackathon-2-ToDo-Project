@@ -1,10 +1,12 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.openapi.docs import get_swagger_ui_html
 from fastapi.openapi.utils import get_openapi
 import uvicorn
 from .database import init_database
 from .api.v1.tasks import router as tasks_router
+from .api.v1.auth import router as auth_router
 from .utils.exceptions import (
     TaskNotFoundException, UserNotAuthorizedException,
     InvalidCredentialsException, ExpiredTokenException,
@@ -19,8 +21,18 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # Allow frontend origin
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods
+    allow_headers=["*"],  # Allow all headers
+)
+
 # Include API routes
 app.include_router(tasks_router)
+app.include_router(auth_router)
 
 # Global exception handlers
 @app.exception_handler(TaskNotFoundException)
